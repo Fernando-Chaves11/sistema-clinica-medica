@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="card shadow p-4">
+
+<h2 class="text-center mb-4">
+
+👨‍⚕️ Editar Médico
+
+</h2>
+
+<form action="/atualizar_medico/{{ medico.id }}" method="POST">
+
+<div class="mb-3">
+
+<label>Nome</label>
+
+<input
+type="text"
+name="nome"
+class="form-control"
+value="{{ medico.nome }}"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>CRM</label>
+
+<input
+type="text"
+name="crm"
+class="form-control"
+value="{{ medico.crm }}"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Especialidade</label>
+
+<input
+type="text"
+name="especialidade"
+class="form-control"
+value="{{ medico.especialidade }}"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Telefone</label>
+
+<input
+type="text"
+name="telefone"
+class="form-control"
+value="{{ medico.telefone }}">
+
+</div>
+
+<button class="btn btn-success">
+
+Salvar Alterações
+
+</button>
+
+<a href="/medicos" class="btn btn-secondary">
+
+Cancelar
+
+</a>
+
+</form>
+
+</div>
+
+{% endblock %}

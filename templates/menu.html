@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="text-center mb-5">
+
+    <h1>🏥 Clínica Médica</h1>
+
+    <h4 class="text-secondary">
+        Sistema de Gerenciamento
+    </h4>
+
+    <hr>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow h-100 border-primary">
+
+            <div class="card-body text-center">
+
+                <h1>👤</h1>
+
+                <h3>Pacientes</h3>
+
+                <h4 class="text-primary">{{ total_pacientes }}</h4>
+
+                <p>Pacientes cadastrados</p>
+
+                <a href="/pacientes" class="btn btn-primary w-100">
+                    Acessar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow h-100 border-success">
+
+            <div class="card-body text-center">
+
+                <h1>👨‍⚕️</h1>
+
+                <h3>Médicos</h3>
+
+                <h4 class="text-success">{{ total_medicos }}</h4>
+
+                <p>Médicos cadastrados</p>
+
+                <a href="/medicos" class="btn btn-success w-100">
+                    Acessar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow h-100 border-warning">
+
+            <div class="card-body text-center">
+
+                <h1>📅</h1>
+
+                <h3>Consultas</h3>
+
+                <h4 class="text-warning">{{ total_consultas }}</h4>
+
+                <p>Consultas agendadas</p>
+
+                <a href="/consultas" class="btn btn-warning w-100">
+                    Acessar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+
+        <h4 class="mb-0">
+            📊 Resumo do Sistema
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row text-center">
+
+            <div class="col-md-4">
+
+                <h1 class="text-primary">
+                    {{ total_pacientes }}
+                </h1>
+
+                <h5>Pacientes</h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h1 class="text-success">
+                    {{ total_medicos }}
+                </h1>
+
+                <h5>Médicos</h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h1 class="text-warning">
+                    {{ total_consultas }}
+                </h1>
+
+                <h5>Consultas</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="alert alert-info text-center">
+
+    <h5>🚀 Projeto desenvolvido para a disciplina de Processo de Desenvolvimento de Software</h5>
+
+    <p class="mb-0">
+        Sistema Web desenvolvido em Python, Flask, SQLite, SQLAlchemy e Bootstrap.
+    </p>
+
+</div>
+
+{% endblock %}

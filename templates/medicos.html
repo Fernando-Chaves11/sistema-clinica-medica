@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="card shadow p-4">
+
+    <h2 class="text-center mb-4">
+        👨‍⚕️ Cadastro de Médicos
+    </h2>
+
+    <form action="/salvar_medico" method="POST">
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>Nome</label>
+                <input
+                    type="text"
+                    name="nome"
+                    class="form-control"
+                    required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>CRM</label>
+                <input
+                    type="text"
+                    name="crm"
+                    class="form-control"
+                    required>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>Especialidade</label>
+                <input
+                    type="text"
+                    name="especialidade"
+                    class="form-control"
+                    required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Telefone</label>
+                <input
+                    type="text"
+                    name="telefone"
+                    class="form-control">
+            </div>
+
+        </div>
+
+        <button class="btn btn-success">
+            Salvar Médico
+        </button>
+
+        <a href="/menu" class="btn btn-secondary">
+            Voltar ao Menu
+        </a>
+
+    </form>
+
+</div>
+
+<hr>
+
+<h3>🔍 Pesquisar Médico</h3>
+
+<form method="GET" action="/medicos" class="row mb-4">
+
+    <div class="col-md-10">
+
+        <input
+            type="text"
+            class="form-control"
+            name="pesquisa"
+            placeholder="Digite o nome do médico"
+            value="{{ pesquisa }}">
+
+    </div>
+
+    <div class="col-md-2">
+
+        <button class="btn btn-primary w-100">
+            Pesquisar
+        </button>
+
+    </div>
+
+</form>
+
+<h3>👨‍⚕️ Médicos Cadastrados</h3>
+
+<table class="table table-striped table-hover">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CRM</th>
+            <th>Especialidade</th>
+            <th>Telefone</th>
+            <th width="180">Ações</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for medico in medicos %}
+
+        <tr>
+
+            <td>{{ medico.id }}</td>
+            <td>{{ medico.nome }}</td>
+            <td>{{ medico.crm }}</td>
+            <td>{{ medico.especialidade }}</td>
+            <td>{{ medico.telefone }}</td>
+
+            <td>
+
+                <a
+                    href="/editar_medico/{{ medico.id }}"
+                    class="btn btn-warning btn-sm">
+
+                    Editar
+
+                </a>
+
+                <a
+                    href="/excluir_medico/{{ medico.id }}"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Deseja excluir este médico?')">
+
+                    Excluir
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% else %}
+
+        <tr>
+
+            <td colspan="6" class="text-center">
+
+                Nenhum médico cadastrado.
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
