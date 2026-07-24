@@ -84,18 +84,44 @@ def medicos():
 
 @app.route("/consultas")
 def consultas():
-    lista_consultas = Consulta.query.all()
 
+    pesquisa = request.args.get("pesquisa", "")
+    medico = request.args.get("medico", "")
+    data = request.args.get("data", "")
+
+    consulta = Consulta.query
+
+    # Pesquisa por paciente
+    if pesquisa:
+        consulta = consulta.filter(
+            Consulta.paciente.contains(pesquisa)
+        )
+
+    # Agenda do médico
+    if medico:
+        consulta = consulta.filter(
+            Consulta.medico == medico
+        )
+
+    # Data da agenda
+    if data:
+        consulta = consulta.filter(
+            Consulta.data == data
+        )
+
+    lista_consultas = consulta.all()
 
     lista_pacientes = Paciente.query.all()
-
     lista_medicos = Medico.query.all()
 
     return render_template(
         "consultas.html",
         consultas=lista_consultas,
         pacientes=lista_pacientes,
-        medicos=lista_medicos
+        medicos=lista_medicos,
+        pesquisa=pesquisa,
+        medico_selecionado=medico,
+        data_selecionada=data
     )
 
 @app.route("/salvar_consulta", methods=["POST"])
@@ -116,7 +142,6 @@ def salvar_consulta():
     db.session.commit()
 
     return redirect("/consultas")
-
 
 @app.route("/editar_consulta/<int:id>")
 def editar_consulta(id):

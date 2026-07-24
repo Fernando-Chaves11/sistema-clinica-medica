@@ -115,7 +115,92 @@
 
 <hr>
 
-<h3>📋 Consultas Agendadas</h3>
+<h3>🔍 Pesquisar Consulta</h3>
+
+<form method="GET" action="/consultas" class="row mb-4">
+
+    <div class="col-md-10">
+
+        <input
+            type="text"
+            class="form-control"
+            name="pesquisa"
+            placeholder="Digite o nome do paciente"
+            value="{{ pesquisa }}">
+
+    </div>
+
+    <div class="col-md-2">
+
+        <button
+            type="submit"
+            class="btn btn-primary w-100">
+
+            Pesquisar
+
+        </button>
+
+    </div>
+
+</form>
+
+<hr>
+
+<h3>📅 Visualizar Agenda do Médico</h3>
+
+<form method="GET" action="/consultas" class="row mb-4">
+
+    <div class="col-md-5">
+
+        <select
+            name="medico"
+            class="form-control">
+
+            <option value="">Selecione o médico</option>
+
+            {% for medico in medicos %}
+
+                <option
+                    value="{{ medico.nome }}"
+                    {% if medico.nome == medico_selecionado %}
+                        selected
+                    {% endif %}>
+
+                    {{ medico.nome }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <input
+            type="date"
+            name="data"
+            class="form-control"
+            value="{{ data_selecionada }}">
+
+    </div>
+
+    <div class="col-md-4">
+
+        <button
+            type="submit"
+            class="btn btn-success w-100">
+
+            Visualizar Agenda
+
+        </button>
+
+    </div>
+
+</form>
+
+<h3>📋 Agenda de Consultas </h3>
 
 <table class="table table-striped table-hover">
 

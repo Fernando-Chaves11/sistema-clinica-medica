@@ -2,41 +2,103 @@
 
 {% block conteudo %}
 
-<div class="card shadow">
+<div class="row justify-content-center">
 
-    <div class="card-body">
+    <div class="col-md-5">
 
-        <h2 class="text-center mb-4">
+        <div class="card shadow-lg border-0">
 
-            🏥 Clínica Médica
+            <div class="card-body p-5">
 
-        </h2>
+                <div class="text-center mb-4">
 
-        <form action="/menu">
+<div class="text-center mb-4">
 
-            <div class="mb-3">
+    <img
+        src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="Clínica Vida+"
+        class="img-fluid mb-3"
+        style="max-width: 320px;">
 
-                <label>Usuário</label>
+    <h4 class="text-secondary">
 
-                <input class="form-control">
+        Sistema de Gestão Clínica
+
+    </h4>
+
+    <p class="text-muted">
+
+        Cuidando da sua saúde com tecnologia.
+
+    </p>
+
+</div>
+
+                </div>
+
+                <form action="/menu">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Usuário
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Digite seu usuário">
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Senha
+
+                        </label>
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Digite sua senha">
+
+                    </div>
+
+                    <button class="btn btn-primary w-100">
+
+                        Entrar
+
+                    </button>
+
+                </form>
+
+                <hr>
+
+                <div class="text-center text-secondary">
+
+                    <small>
+
+                        Processo de Desenvolvimento de Software
+
+                    </small>
+
+                    <br>
+
+                    <small>
+
+                        Universidade Federal de Uberlândia
+
+                    </small>
+
+                </div>
 
             </div>
 
-            <div class="mb-3">
-
-                <label>Senha</label>
-
-                <input type="password" class="form-control">
-
-            </div>
-
-            <button class="btn btn-primary w-100">
-
-                Entrar
-
-            </button>
-
-        </form>
+        </div>
 
     </div>
 
